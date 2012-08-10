@@ -15,7 +15,7 @@
   var G = {},
     root = window,
     Private = {};
-  G.String = {};
+  G.string = {};
 
   G.version = '1.0.1';
   /**
@@ -44,7 +44,7 @@
       get_method;
 
     if(key.indexOf('_') === -1 && typeof context[key] !== 'function') {
-      cls = G.String.camelize(key);
+      cls = G.string.camelize(key);
       set_method = 'set'+ cls;
       if(!context[set_method]) {
         context[set_method] = function(value) {
@@ -67,7 +67,7 @@
    * @return {String}
    */
 
-  G.String.camelize = function(word) {
+  G.string.camelize = function(word) {
     return word.replace (/(?:^|[\-_])(\w)/g, function (_, c) {
       return c ? c.toUpperCase () : '';
     });

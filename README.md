@@ -68,7 +68,7 @@ excecuted automaticacly then this object is created.
 
 We are also passing some properties related to this object and public function as 
 sayHello();. All these properties and functions are added to the object and we 
-can access the object these functions as CA.ui.Button,sayHello();
+can access the object these functions as CA.ui.Button.sayHello();
 
 You can also implement inheritence by adding the extend keyword and Object name.
 
