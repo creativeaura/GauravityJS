@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Gauravityjs by creativeaura</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Gauravityjs</h1>
+        <p class="header">Library that make JavaScript inheritance easy.</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/creativeaura/GauravityJS/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/creativeaura/GauravityJS/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/creativeaura/GauravityJS">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/creativeaura">creativeaura</a></p>
+
+
+      </header>
+      <section>
+        <h1>Gauravity JS</h1>
+
+<p>A library to make javascript inheritence simple.</p>
+
+<h2>Instant Gratification</h2>
+
+<pre><code>Gauravity.define('CA.ui.Button',{
+  initilize: function(){
+     console.log("-&gt; CA.ui.Button initilize"); 
+  },
+    properties: {
+        text: "Label",
+        width: 300,
+        height: 22,
+        border: 2,
+        backgroundColor: '0x000000',
+        foregroundColor: '0xFFFFFF'
+  },
+    sayHello: function() {
+        return 'Button::sayHello() ' + this.text;
+    }
+});
+
+Gauravity.define('CA.ui.BackButton', {
+  extend: 'CA.ui.Button',
+
+  initilize: function(){
+     console.log("-&gt; CA.ui.BackButton initilize"); 
+  },
+  properties: {
+    text: 'Back',
+    backgroundColor: 'grey',
+  },
+  goodBye: function () {
+    return 'Button::goodBye()';
+  }
+});
+</code></pre>
+
+<h2>API</h2>
+
+<h3>Gauravity.define([String namespace],[Object config]);</h3>
+
+<p>Define function is used to create an object with properties and functions is one 
+single step. </p>
+
+<pre><code>Gauravity.define('CA.ui.Button',{
+  initilize: function(){
+     console.log("-&gt; CA.ui.Button initilize"); 
+  },
+    properties: {
+        text: "Label",
+        width: 300,
+        height: 22,
+        border: 2,
+        backgroundColor: '0x000000',
+        foregroundColor: '0xFFFFFF'
+  },
+    sayHello: function() {
+        return 'Button::sayHello() ' + this.text;
+    }
+});
+</code></pre>
+
+<p>In the above example we create an object called Button in a namespace that was 
+created automatically for us. Then we defined an initilize function that gets
+excecuted automaticacly then this object is created. </p>
+
+<p>We are also passing some properties related to this object and public function as 
+sayHello();. All these properties and functions are added to the object and we 
+can access the object these functions as CA.ui.Button.sayHello();</p>
+
+<p>You can also implement inheritence by adding the extend keyword and Object name.</p>
+
+<pre><code>Gauravity.define('CA.ui.BackButton', {
+  extend: 'CA.ui.Button',
+
+  initilize: function(){
+     console.log("-&gt; CA.ui.BackButton initilize"); 
+  },
+  properties: {
+    text: 'Back',
+    backgroundColor: 'grey',
+  },
+  goodBye: function () {
+    return 'Button::goodBye()';
+  }
+});
+</code></pre>
+
+<p>In the above example CA.ui.BackButton is inheriting all properties from 
+CA.ui.Button and added its own properies as well. You can now access sayHello() 
+function in BackButton now. </p>
+
+<pre><code>CA.ui.BackButton.sayHello();
+</code></pre>
+
+<h3>Gauravity.namespaces([String namespace],[Object option]);</h3>
+
+<p>The function will create an object namespace for you in one single step. You can 
+also pass optional parameter for options if you want to create just a top level
+object hierarchy.</p>
+
+<pre><code>Gauravity.namespaces('CA.ui.Button');
+</code></pre>
+
+<p>This is create a namespace as CA -&gt; ui -&gt; Button</p>
+
+<pre><code>Gauravity.namespaces('CA.ui.Navigation', {level: "TOP"});
+</code></pre>
+
+<p>This is create a namespace as CA -&gt; ui</p>
+
+<h2>More documentation coming soon.</h2>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
