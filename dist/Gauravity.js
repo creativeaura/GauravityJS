@@ -1,35 +1,15 @@
-/*! Gauravity - v1.0.2 - 2012-09-23
+/*!Gauravity - v1.0.2 - 2012-09-23
 * https://github.com/creativeaura/GauravityJS
-* Copyright (c) 2012 function () {
-
-// If the string looks like an identifier, then we can return it as is.
-// If the string contains no control characters, no quote characters, and no
-// backslash characters, then we can simply slap some quotes around it.
-// Otherwise we must also replace the offending characters with safe
-// sequences.
-
-            if (ix.test(this)) {
-                return this;
-            }
-            if (nx.test(this)) {
-                return '"' + this.replace(nxg, function (a) {
-                    var c = escapes[a];
-                    if (c) {
-                        return c;
-                    }
-                    return '\\u' + ('0000' + a.charCodeAt().toString(16)).slice(-4);
-                }) + '"';
-            }
-            return '"' + this + '"';
-        }; Licensed MIT */
+* Copyright (c) 2012 */
 
 /*jslint browser:true, devel:true, evil: true, regexp: true */
 
 /*
- * Gauravity JavaScript Library v 1.0.1
+ * Gauravity JavaScript Library v 1.0.2
  * http://lab.jassal.me/
  *
  * Copyright 2012, Gaurav Jassal
+ *
  *
  * Includes *
  */
@@ -201,6 +181,16 @@
     return exports[parts[0]];
   };
 
+  /**
+   * This function creates a new instance for the Object and retuns it.
+   * @params {Object}
+   * @return {Object}
+   */
+  G.create = function (o) {
+    if (o) {
+      return Object.create(o);
+    }
+  };
   exports.Gauravity = exports.G =  G;
 
 }(this));
