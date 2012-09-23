@@ -1,4 +1,4 @@
-node_modules
-GauravityJS.sublime-project
-GauravityJS.sublime-workspace
-.gitignore
+node_modules*
+GauravityJS.sublime-project*
+GauravityJS.sublime-workspace*
+.gitignore*
