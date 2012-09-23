@@ -1,4 +1,28 @@
-/*global $, window, CanvasLoader, jQuery, alert, log, printStackTrace*/
+/*! Gauravity - v1.0.2 - 2012-09-23
+* https://github.com/creativeaura/GauravityJS
+* Copyright (c) 2012 function () {
+
+// If the string looks like an identifier, then we can return it as is.
+// If the string contains no control characters, no quote characters, and no
+// backslash characters, then we can simply slap some quotes around it.
+// Otherwise we must also replace the offending characters with safe
+// sequences.
+
+            if (ix.test(this)) {
+                return this;
+            }
+            if (nx.test(this)) {
+                return '"' + this.replace(nxg, function (a) {
+                    var c = escapes[a];
+                    if (c) {
+                        return c;
+                    }
+                    return '\\u' + ('0000' + a.charCodeAt().toString(16)).slice(-4);
+                }) + '"';
+            }
+            return '"' + this + '"';
+        }; Licensed MIT */
+
 /*jslint browser:true, devel:true, evil: true, regexp: true */
 
 /*

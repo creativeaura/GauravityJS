@@ -1,0 +1,23 @@
+{
+  "name": "Gauravity",
+  "description": "A library to make javascript inheritence simple.",
+  "version": "1.0.2",
+  "author": "\"Gaurav\" Jassal (http://gaurav.jassal.me/)",
+  "homepage": "https://github.com/creativeaura/GauravityJS",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/creativeaura/GauravityJS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/creativeaura/GauravityJS/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "dependencies": {
+    "mocha": "~1.5.0"
+  },
+  "devDependencies": {}
+}
