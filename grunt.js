@@ -19,7 +19,11 @@ module.exports = function(grunt) {
     },
     concat: {
       dist: {
-        src: ['<banner:meta.banner>', '<file_strip_banner:lib/<%= pkg.name %>.js>'],
+        src: [
+          '<banner:meta.banner>',
+          '<file_strip_banner:lib/<%= pkg.name %>.js>',
+          '<file_strip_banner:lib/<%= pkg.name %>MVC.js>'
+          ],
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
@@ -32,6 +36,10 @@ module.exports = function(grunt) {
     watch: {
       files: '<config:lint.files>',
       tasks: 'lint qunit'
+    },
+    server: {
+      port: 8000,
+      base: '.'
     },
     jshint: {
       options: {

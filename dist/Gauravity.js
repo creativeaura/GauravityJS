@@ -1,18 +1,8 @@
-/*!Gauravity - v1.0.2 - 2012-09-23
+/*!Gauravity - v1.0.2 - 2012-09-24
 * https://github.com/creativeaura/GauravityJS
 * Copyright (c) 2012 */
 
 /*jslint browser:true, devel:true, evil: true, regexp: true */
-
-/*
- * Gauravity JavaScript Library v 1.0.2
- * http://lab.jassal.me/
- *
- * Copyright 2012, Gaurav Jassal
- *
- *
- * Includes *
- */
 
 (function (exports) {
   "use strict";
@@ -21,7 +11,7 @@
     Private = {};
   G.string = {};
 
-  G.version = '1.0.1';
+  G.version = '1.0.2';
   /**
    * Method to parse the namespace string and reterive Class name
    *
@@ -106,6 +96,13 @@
       }
     };
 
+    Klass.prototype.ready = function() {
+      console.log('-> [Class Ready] %s', ClassName);
+      if (typeof(configure.ready) === 'function') {
+        configure.ready.apply(configure, arguments);
+      }
+    };
+
     Klass.fn = Klass.prototype;
     Klass.fn.parent = Klass;
     //Klass.supr = Klass.__proto__;
@@ -142,7 +139,18 @@
       }
     }
 
+    iKlass.events = {};
+    // Add Event to the Object
+    for (p in configure.events) {
+      if(typeof(configure.events[p]) !== 'function'){
+        iKlass.events[p] = configure.events[p];
+      }
+    }
+    
     parentObject[ClassName] = iKlass;
+
+    iKlass.ready.apply(iKlass, arguments);
+    
     return iKlass;
   };
 
@@ -215,3 +223,123 @@ Array.prototype.find = function(searchStr) {
   }
   return returnArray;
 };
+/*jslint browser:true, devel:true, evil: true, regexp: true */
+
+(function (exports) {
+  "use strict";
+  Gauravity.define('Gauravity.View',{
+    initilize: function(){
+       console.log("-> Gauravity.View");
+    },
+    properties: {
+      el: '',
+      $el: '',
+      className: '',
+      tagName: ''
+    },
+    events: {
+
+    },
+    render: function() {
+      
+    },
+    destroy: function() {
+      
+    },
+    ready: function() {
+      this.$el = $(this.el);
+    },
+    bindEvents: function() {
+      var fn, s, ev;
+      for(var e in this.events) {
+        fn = this.events[e];
+        s = e.split(/\s+/);
+        ev = s[s.length -1];
+        s.pop();
+        s = s.join(' ');
+        if(typeof this[fn] === 'function') {
+          this.delegateEvent(s, e, ev, fn);
+        }
+      }
+    },
+    delegateEvent: function(s, e, ev, fn) {
+      console.log(s, e, ev, fn);
+      var self = this;
+      this.$el.delegate(s, ev, function(evt_obj) {
+        self[fn].apply(this,arguments);
+      });
+    }
+  });
+
+
+  Gauravity.define('Gauravity.Collection',{
+    initilize: function(){
+       console.log("-> Gauravity.Collection");
+    },
+    properties: {
+      model : {},
+      length: 0,
+      url: '',
+      data: []
+    },
+    get: function() {
+
+    },
+    getByCid: function() {
+      
+    },
+    at: function(i) {
+      return this.data[i];
+    },
+    push: function(o) {
+      this.data.push(o);
+      this.length = this.data.length;
+    },
+    pop: function() {
+      
+    },
+    reset: function() {
+      this.data = [];
+    },
+    fetch: function() {
+      
+    },
+    getCount: function() {
+      return this.data.length;
+    }
+  });
+
+  Gauravity.define('Gauravity.Model',{
+    initilize: function(){
+       console.log("-> Gauravity.Model");
+    },
+    properties: {
+      
+    },
+    set: function(k,v) {
+      this[k] = v;
+    },
+    get: function() {
+      
+    },
+    has: function() {
+      
+    },
+    fetch: function() {
+      
+    },
+    save: function() {
+      
+    },
+    destroy: function() {
+      
+    },
+    isValid: function() {
+      
+    },
+    hasChanged: function() {
+      
+    }
+  });
+
+}(this));
